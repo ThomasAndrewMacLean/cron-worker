@@ -59,7 +59,8 @@ app.post('/updateSiteMap', (req, res) => {
                     .then(res => res.json())
                     .then(result => {
                         console.log('😸');
-                        console.log(result);
+                        console.log(sitemaproutesString);
+
                         fetch(githubApi, {
                             method: 'PUT',
                             body: JSON.stringify({
