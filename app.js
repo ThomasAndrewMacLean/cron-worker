@@ -54,15 +54,7 @@ app.post('/updateSiteMap', (req, res) => {
                 //send to the github api, and save as new siteroutes.
                 //This will trigger travis, and that will in turn deploy the new site.
                 fetch(githubApi, {
-                    method: 'PUT',
-                    body: JSON.stringify({
-                        message: 'my commit message',
-                        committer: {
-                            name: 'Scott Chacon',
-                            email: 'schacon@gmail.com'
-                        },
-                        content: 'bXkgbmV3IGZpbGUgY29udGVudHM='
-                    }),
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: 'Bearer ' + process.env.GITHUB_TOKEN
@@ -70,21 +62,41 @@ app.post('/updateSiteMap', (req, res) => {
                 })
                     .then(res => res.json())
                     .then(result => {
-                        console.log(result);
-                        //send a message to slack to say the job has been done.
-                        fetch(
-                            //get correct hook
-                            'https://hooks.slack.com/services/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',
-                            {
-                                method: 'POST',
-                                body: JSON.stringify({
-                                    text: `new pull request to be reviewed! PR:`
-                                }),
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
+                        fetch(githubApi, {
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                message: 'my commit message',
+                                committer: {
+                                    name: 'ThomasAndrewMacLean',
+                                    email: 'hello@thomasmaclean.be'
+                                },
+                                content: btoa(sitemaproutesString),
+                                sha: result.sha
+                            }),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization:
+                                    'Bearer ' + process.env.GITHUB_TOKEN
                             }
-                        );
+                        })
+                            .then(res => res.json())
+                            .then(result => {
+                                console.log(result);
+                                //send a message to slack to say the job has been done.
+                                fetch(
+                                    //get correct hook
+                                    'https://hooks.slack.com/services/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',
+                                    {
+                                        method: 'POST',
+                                        body: JSON.stringify({
+                                            text: `new pull request to be reviewed! PR:`
+                                        }),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    }
+                                );
+                            });
                     });
             });
     }
