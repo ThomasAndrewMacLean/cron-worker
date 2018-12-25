@@ -28,6 +28,7 @@ app.post('/updateSiteMap', (req, res) => {
     const githubApi =
         'https://api.github.com/repos/ThomasAndrewMacLean/project-blog/contents/sitemaproutes.js';
 
+    console.log(req.body);
     //check if its the storyblok bot that has published a story.
     if (
         req.body.event.bot_id === bot_id &&
