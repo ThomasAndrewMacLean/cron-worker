@@ -1,0 +1,25 @@
+{
+    "name": "cron-worker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "entry point": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ThomasAndrewMacLean/cron-worker.git"
+    },
+    "keywords": [],
+    "author": "Thomas MacLean <hello@thomasmaclean.be> (https://thomasmaclean.be)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ThomasAndrewMacLean/cron-worker/issues"
+    },
+    "homepage": "https://github.com/ThomasAndrewMacLean/cron-worker#readme",
+    "dependencies": {
+        "express": "^4.16.4"
+    }
+}
