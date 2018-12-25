@@ -39,8 +39,6 @@ app.post('/updateSiteMap', (req, res) => {
         fetch(storyblokApi)
             .then(res => res.json())
             .then(result => {
-                console.log(result);
-
                 const projects = result.stories
                     .filter(story => story.full_slug.includes('projects/'))
                     .map(story => story.full_slug);
@@ -60,6 +58,8 @@ app.post('/updateSiteMap', (req, res) => {
                 })
                     .then(res => res.json())
                     .then(result => {
+                        console.log('😸');
+                        console.log(result);
                         fetch(githubApi, {
                             method: 'PUT',
                             body: JSON.stringify({
