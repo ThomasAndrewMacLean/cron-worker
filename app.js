@@ -32,7 +32,7 @@ app.post('/updateSiteMap', (req, res) => {
     //check if its the storyblok bot that has published a story.
     if (
         req.body.event.bot_id === bot_id &&
-        req.body.event.text.contains('published the Story')
+        req.body.event.text.includes('published the Story')
     ) {
         //get all the projects from the storyblok api
         fetch(storyblokApi)
