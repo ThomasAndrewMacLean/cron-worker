@@ -41,11 +41,9 @@ app.post('/updateSiteMap', (req, res) => {
             .then(result => {
                 console.log(result);
 
-                const projects = result.stories.filter(story =>
-                    story.full_slug
-                        .includes('projects/')
-                        .map(story => story.full_slug)
-                );
+                const projects = result.stories
+                    .filter(story => story.full_slug.includes('projects/'))
+                    .map(story => story.full_slug);
                 const sitemaproutesString = `module.exports = ["${projects.join(
                     '","'
                 )}"]`;
