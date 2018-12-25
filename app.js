@@ -24,7 +24,8 @@ app.post('/updateSiteMap', (req, res) => {
     const challenge = req.body.challenge;
     const bot_id = 'BE5J35KLH';
     const storyblokApi =
-        'api.storyblok.com/v1/cdn/stories?' + process.env.STORYBLOK_TOKEN;
+        'https://api.storyblok.com/v1/cdn/stories?' +
+        process.env.STORYBLOK_TOKEN;
     const githubApi =
         'https://api.github.com/repos/ThomasAndrewMacLean/project-blog/contents/sitemaproutes.js';
 
