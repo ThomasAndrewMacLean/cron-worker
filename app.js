@@ -39,9 +39,11 @@ app.post('/updateSiteMap', (req, res) => {
         fetch(storyblokApi)
             .then(res => res.json())
             .then(result => {
+                console.log(result);
+
                 const projects = result.stories.filter(story =>
                     story.full_slug
-                        .contains('projects/')
+                        .includes('projects/')
                         .map(story => story.full_slug)
                 );
                 const sitemaproutesString = `module.exports = ["${projects.join(
