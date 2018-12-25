@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 app.post('/updateSiteMap', (req, res) => {
     const challenge = req.body.challenge;
-
+    console.log(req.body);
     res.status(200).json({
         challenge
     });
