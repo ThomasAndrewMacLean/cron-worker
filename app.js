@@ -103,9 +103,15 @@ app.post('/updateSiteMap', (req, res) => {
                                         method: 'POST',
 
                                         body: JSON.stringify({
-                                            color: '#3AA3E3',
-                                            title: 'updated the sitemap',
-                                            text: result
+                                            text: '🎉',
+                                            attachments: [
+                                                {
+                                                    color: '#3AA3E3',
+                                                    title:
+                                                        'updated the sitemap',
+                                                    text: JSON.stringify(result)
+                                                }
+                                            ]
                                         }),
                                         headers: {
                                             'Content-Type': 'application/json'
