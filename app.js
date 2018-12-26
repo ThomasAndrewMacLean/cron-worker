@@ -58,21 +58,6 @@ app.post('/updateSiteMap', (req, res) => {
                 })
                     .then(res => res.json())
                     .then(result => {
-                        console.log('😸');
-                        console.log(
-                            JSON.stringify({
-                                message: 'my commit message',
-                                committer: {
-                                    name: 'ThomasAndrewMacLean',
-                                    email: 'hello@thomasmaclean.be'
-                                },
-                                content: Buffer.from(
-                                    sitemaproutesString
-                                ).toString('base64'),
-                                sha: result.sha
-                            })
-                        );
-
                         fetch(githubApi, {
                             method: 'PUT',
                             body: JSON.stringify({
@@ -107,9 +92,8 @@ app.post('/updateSiteMap', (req, res) => {
                                             attachments: [
                                                 {
                                                     color: '#3AA3E3',
-                                                    title:
-                                                        'updated the sitemap',
-                                                    text: JSON.stringify(result)
+                                                    title: 'updated the sitemap'
+                                                    //text: JSON.stringify(result)
                                                 }
                                             ]
                                         }),
@@ -128,7 +112,7 @@ app.post('/updateSiteMap', (req, res) => {
     });
 });
 app.get('*/*', function(req, res) {
-    res.send('🎄🎄🎄🎄🎄Vrolijke kerst mijn liefste liefje!!!!!!! 😘😘😘😘😘');
+    res.send('🤖');
 });
 
 let port = process.env.PORT || 3000;
