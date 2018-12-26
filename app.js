@@ -59,7 +59,17 @@ app.post('/updateSiteMap', (req, res) => {
                     .then(res => res.json())
                     .then(result => {
                         console.log('😸');
-                        console.log(sitemaproutesString);
+                        console.log(
+                            JSON.stringify({
+                                message: 'my commit message',
+                                committer: {
+                                    name: 'ThomasAndrewMacLean',
+                                    email: 'hello@thomasmaclean.be'
+                                },
+                                content: btoa(sitemaproutesString),
+                                sha: result.sha
+                            })
+                        );
 
                         fetch(githubApi, {
                             method: 'PUT',
