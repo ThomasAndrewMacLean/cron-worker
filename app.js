@@ -76,7 +76,7 @@ app.post('/updateSiteMap', (req, res) => {
                         fetch(githubApi, {
                             method: 'PUT',
                             body: JSON.stringify({
-                                message: 'my commit message',
+                                message: 'updating the sitemap routes',
                                 committer: {
                                     name: 'ThomasAndrewMacLean',
                                     email: 'hello@thomasmaclean.be'
@@ -98,11 +98,14 @@ app.post('/updateSiteMap', (req, res) => {
                                 //send a message to slack to say the job has been done.
                                 fetch(
                                     //get correct hook
-                                    'https://hooks.slack.com/services/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',
+                                    'https://hooks.slack.com/services/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',
                                     {
                                         method: 'POST',
+
                                         body: JSON.stringify({
-                                            text: `new pull request to be reviewed! PR:`
+                                            color: '#3AA3E3',
+                                            title: 'updated the sitemap',
+                                            text: result
                                         }),
                                         headers: {
                                             'Content-Type': 'application/json'
