@@ -66,7 +66,9 @@ app.post('/updateSiteMap', (req, res) => {
                                     name: 'ThomasAndrewMacLean',
                                     email: 'hello@thomasmaclean.be'
                                 },
-                                content: btoa(sitemaproutesString),
+                                content: Buffer.from(
+                                    sitemaproutesString
+                                ).toString('base64'),
                                 sha: result.sha
                             })
                         );
